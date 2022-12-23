@@ -25,14 +25,15 @@ function createGalleryItem(items) {
 
 galleryContainer.insertAdjacentHTML("afterbegin", galleryMarkup);
 
-// galleryContainer.addEventListener("click", onGalleryContainerClick);
+galleryContainer.addEventListener("click", onGalleryContainerClick);
 
-// function onGalleryContainerClick(event) {
-//   if (event.target.nodeName !== "img") {
-//     return;
-//   }
+function onGalleryContainerClick(e) {
+  e.preventDefault();
+  if (e.target.nodeName !== "IMG") {
+    return;
+  }
 
-//   console.log(event.target.textContent);
-// }
+  console.log(e.target);
+}
 
 // console.log(galleryItems);
