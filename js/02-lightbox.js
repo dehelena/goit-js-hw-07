@@ -27,8 +27,9 @@ function onGalleryContainerClick(e) {
 
   const sourceUrl = e.target.dataset.source;
 
-  var lightbox = new SimpleLightbox(".gallery a", {
-    /* options */
+  const lightbox = new SimpleLightbox(".gallery a", {
+    captionsData: "alt",
+    captionDelay: 250,
   });
 }
 
