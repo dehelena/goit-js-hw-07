@@ -23,17 +23,36 @@ function createGalleryItem(items) {
     .join("");
 }
 
-galleryContainer.insertAdjacentHTML("afterbegin", galleryMarkup);
+galleryContainer.innerHTML = galleryMarkup;
 
 galleryContainer.addEventListener("click", onGalleryContainerClick);
 
+let modalImage;
+
 function onGalleryContainerClick(e) {
   e.preventDefault();
+
   if (e.target.nodeName !== "IMG") {
     return;
   }
 
-  console.log(e.target);
+  const sourceUrl = e.target.dataset.source;
+  // console.log(sourceUrl);
+
+  modalImage = basicLightbox.create(
+    `<img src="${sourceUrl}" width="800" height="600">`
+  );
+  modalImage.show();
+
+  document.addEventListener("keydown", onEscapeKeyDown);
+}
+
+function onEscapeKeyDown(e) {
+  if (e.code === "Escape") {
+    modalImage.close();
+
+    document.removeEventListener("keydown", onEscapeKeyDown);
+  }
 }
 
 // console.log(galleryItems);
