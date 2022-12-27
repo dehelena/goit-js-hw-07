@@ -18,6 +18,11 @@ galleryContainer.insertAdjacentHTML("afterbegin", galleryMarkup);
 
 galleryContainer.addEventListener("click", onGalleryContainerClick);
 
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
+
 function onGalleryContainerClick(e) {
   e.preventDefault();
 
@@ -25,8 +30,3 @@ function onGalleryContainerClick(e) {
     return;
   }
 }
-
-const lightbox = new SimpleLightbox(".gallery a", {
-  captionsData: "alt",
-  captionDelay: 250,
-});
