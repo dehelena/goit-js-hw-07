@@ -24,13 +24,9 @@ function onGalleryContainerClick(e) {
   if (e.target.nodeName !== "IMG") {
     return;
   }
-
-  const sourceUrl = e.target.dataset.source;
-
-  const lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionDelay: 250,
-  });
 }
 
-// console.log(galleryItems);
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});

@@ -40,19 +40,18 @@ function onGalleryContainerClick(e) {
   // console.log(sourceUrl);
 
   modalImage = basicLightbox.create(
-    `<img src="${sourceUrl}" width="800" height="600">`
+    `<img src="${sourceUrl}" width="800" height="600">`,
+    {
+      onClose: () => document.removeEventListener("keydown", onEscapeKeyDown),
+    }
   );
   modalImage.show();
 
-  document.addEventListener("keydown", onEscapeKeyDown);
+  document.addEventListener("keydown", onEscapeKeyDown, { once: true });
 }
 
 function onEscapeKeyDown(e) {
   if (e.code === "Escape") {
     modalImage.close();
-
-    document.removeEventListener("keydown", onEscapeKeyDown);
   }
 }
-
-// console.log(galleryItems);
